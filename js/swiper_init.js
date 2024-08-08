@@ -1,13 +1,16 @@
-const swiper = new Swiper(".hero__swiper", {
-  effect: "fade",
-  centeredSlides: true,
-  direction: "horizontal",
-  slidesPerView: 1,
-  preloadImages: false,
-  // Enable lazy loading
-  lazy: true,
-  parallax: true,
+const container = document.querySelector(".container")
+const swiper = new Swiper('.hero__swiper', {
+  // Default parameters
+
+  speed: 300,
   pagination: {
-    el: '.swiper-pagination',
+    el: '.hero__pagination',
+    type: 'bullets',
+    clickable: true
   },
-});
+  a11y: {
+    prevSlideMessage: 'Предыдущий слайд',
+    nextSlideMessage: 'Следующий слайд',
+    paginationBulletMessage: 'Перейти к слайду {{index}}'
+  },
+})

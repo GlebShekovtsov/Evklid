@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.css">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/media.css">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_assets/favicon-32x32.png">
@@ -17,18 +18,17 @@
 <body>
     <header class="header">
         <div class="container header__container">
-            <button class="burger btn-reset">
+            <button class="burger btn-reset" aria-label="Открыть меню">
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
                 <span class="burger__line"></span>
             </button>
-            <a href="index.html" class="header__logo">
+            <a href="index.html" class="header__logo" aria-label="Логотип">
                 <picture>
                     <source media="(max-width: 1024px)" srcset="img/logo_w1024.svg">
                     <source media="(max-width: 320px)" srcset="img/logo_w320.svg">
                     <img src="img/logo.svg" alt="Евклид - Проектные системы">
                 </picture>
-
             </a>
             <nav class="nav header__nav">
                 <ul class="nav__list list-reset">
@@ -39,52 +39,77 @@
                     <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
                 </ul>
             </nav>
-            <button class="header__button btn-reset">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="7.56126" height="1.89031"
-                        transform="matrix(0.713342 0.700816 -0.713342 0.700816 18.6064 17.3762)" />
-                    <path
-                        d="M20.9303 10.7726C20.9303 16.1533 16.4855 20.5452 10.9652 20.5452C5.44478 20.5452 1 16.1533 1 10.7726C1 5.39198 5.44478 1 10.9652 1C16.4855 1 20.9303 5.39198 20.9303 10.7726Z"
-                        stroke="black" stroke-width="2" />
-                </svg>
+            <div class="header__search search">
+                <button class="form-btn__open search__open" aria-label="Открыть форму поиска">
+                    <svg width="25" height="25" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="9.15446" height="2.28862"
+                            transform="matrix(-0.718931 0.695081 0.718931 0.695081 6.58105 21.0461)" fill="grey" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M16.1246 24.174C10.0376 24.174 5.32763 19.2726 5.32763 13.5104C5.32763 7.74823 10.0376 2.84676 16.1246 2.84676C22.2115 2.84676 26.9215 7.74823 26.9215 13.5104C26.9215 19.2726 22.2115 24.174 16.1246 24.174ZM16.1246 26.8399C8.76285 26.8399 2.79502 20.8721 2.79502 13.5104C2.79502 6.14869 8.76285 0.180847 16.1246 0.180847C23.4863 0.180847 29.4541 6.14869 29.4541 13.5104C29.4541 20.8721 23.4863 26.8399 16.1246 26.8399Z"
+                            fill="grey" />
+                    </svg>
+                </button>
 
-            </button>
+                <form action="/" class="search__form">
+                    <input class="search__input" type="text" placeholder="Что будем искать?">
+                    <button class="form-btn__submit search__submit" type="button" aria-label="Найти">
+                        <svg width="24" height="24" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="9.15446" height="2.28862"
+                                transform="matrix(-0.718931 0.695081 0.718931 0.695081 6.58105 21.0461)" fill="grey" />
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16.1246 24.174C10.0376 24.174 5.32763 19.2726 5.32763 13.5104C5.32763 7.74823 10.0376 2.84676 16.1246 2.84676C22.2115 2.84676 26.9215 7.74823 26.9215 13.5104C26.9215 19.2726 22.2115 24.174 16.1246 24.174ZM16.1246 26.8399C8.76285 26.8399 2.79502 20.8721 2.79502 13.5104C2.79502 6.14869 8.76285 0.180847 16.1246 0.180847C23.4863 0.180847 29.4541 6.14869 29.4541 13.5104C29.4541 20.8721 23.4863 26.8399 16.1246 26.8399Z"
+                                fill="grey" />
+                        </svg>
+                    </button>
+                    <button class="form-close search__close" type="button" aria-label="Закрыть форму поиска">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8.9541" y="7.30432" width="11.6645" height="2.33291"
+                                transform="rotate(45 8.9541 7.30432)" fill="#CACACA" />
+                            <rect x="7.30469" y="15.5524" width="11.6645" height="2.33291"
+                                transform="rotate(-45 7.30469 15.5524)" fill="#CACACA" />
+                            <circle cx="12" cy="12" r="11" stroke="#CACACA" stroke-width="2" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </div>
     </header>
+
     <main class="main">
         <section class="main__section hero" id="hero">
-            <div class="container hero__container hero__swiper">
+
+            <div class="container hero__container">
                 <div class="hero__content">
+                    <!-- swiper -->
+                    <div class="swiper hero__swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide hero__slide--first" aria-label="Первый слайд"></div>
+                            <div class="swiper-slide hero__slide--second" aria-label="Второй слайд"></div>
+                            <div class="swiper-slide hero__slide--third" aria-label="Третий слайд"></div>
+
+                        </div>
+                        <!-- If we need pagination -->
+
+                        <div class="swiper-bullet-pagination hero__pagination"></div>
+                    </div>
                     <h1 class="hero__header">
                         Проектные решения любой сложности
                     </h1>
-                    <p class="hero__descr">
+                    <p class="hero__descr" aria-label="Описание заголовка">
                         Есть над чем задуматься: базовые сценарии поведения пользователей
                         и&nbsp;по&nbsp;сей день остаются уделом проектантов
                     </p>
                     <button class="hero__btn btn btn-reset">Заказать расчёт</button>
-                    
-                </div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img data-src="img/hero_background.jpg" class="swiper-lazy" />
-                    </div>
 
-                    <div class="swiper-slide">
-                        <img data-src="img/hero_background_2.jpg" class="swiper-lazy" />
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img data-src="img/hero_background_3.jpg" class="swiper-lazy" />
-                    </div>
-                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </section>
         <section class="main__section about main__section__offset" id="about">
             <div class="container">
                 <h2 class="main__section__header about__main__header">О нас</h2>
-                <p class="about__descr">
+                <p class="about__descr" aria-label="Описание заголовка">
                     Также как перспективное планирование создаёт необходимость включения в&nbsp;производственный план
                     целого ряда внеочередных мероприятий с&nbsp;учётом комплекса экспериментов, поражающих по&nbsp;своей
                     масштабности и&nbsp;грандиозности. А&nbsp;также диаграммы связей могут быть описаны максимально
@@ -97,7 +122,7 @@
                 </p>
 
                 <div class="about__wrapper">
-                    <div class="about__content">
+                    <div class="about__content" aria-label="Левый блок под описание заголовка">
                         <div class="about__left__block">
                             <div class="about__mobile__block">
                             </div>
@@ -111,15 +136,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="about__content right__content">
+                    <div class="about__content right__content" aria-label="Правый блок под описанием заголовка">
                         <div class="about__right__block">
-                            <div class="about__right__block__icon  about__right__block__icon--1">
+                            <div class="about__right__block__icon  about__right__block__icon--1" role="img">
                             </div>
                             <div class="about__right__block__wrapper">
                                 <h3 class="about__block__header">
                                     Консультация с&nbsp;широким активом
                                 </h3>
-                                <p class="about__block__descr">
+                                <p class="about__block__descr" aria-label="Описание заголовка">
                                     А&nbsp;также свежий взгляд на&nbsp;привычные вещи&nbsp;&mdash; безусловно открывает
                                     новые горизонты для как самодостаточных, так и&nbsp;внешне зависимых концептуальных
                                     решений
@@ -127,14 +152,14 @@
                             </div>
                         </div>
                         <div class="about__right__block ">
-                            <div class="about__right__block__icon about__right__block__icon--2">
+                            <div class="about__right__block__icon about__right__block__icon--2" role="img">
 
                             </div>
                             <div class="about__right__block__wrapper ">
                                 <h3 class="about__block__header">
                                     В&nbsp;своём стремлении повысить
                                 </h3>
-                                <p class="about__block__descr">
+                                <p class="about__block__descr" aria-label="Описание заголовка">
                                     Качество жизни, они забывают, что сплочённость команды профессионалов представляет
                                     собой
                                     интересный эксперимент проверки прогресса профессионального сообщества
@@ -152,22 +177,23 @@
                 <h2 class="main__section__header how-we-work__section__header">Как мы работаем</h2>
                 <ul class="how-we-work__list list-reset">
                     <li class="how-we-work__item">
-                        <button class="btn-reset how-we-work__step how-we-work__step--active" data-path="one">
+                        <button class="btn-reset how-we-work__step how-we-work__step--active" data-path="one"
+                            aria-current="step" aria-label="Первый шаг">
                             1&nbsp;шаг
                         </button>
                     </li>
                     <li class="how-we-work__item">
-                        <button class="btn-reset how-we-work__step" data-path="two">
+                        <button class="btn-reset how-we-work__step" data-path="two" aria-label="Второй шаг">
                             2&nbsp;шаг
                         </button>
                     </li>
                     <li class="how-we-work__item">
-                        <button class="btn-reset how-we-work__step" data-path="three">
+                        <button class="btn-reset how-we-work__step" data-path="three" aria-label="Третий шаг">
                             3&nbsp;шаг
                         </button>
                     </li>
                     <li class="how-we-work__item">
-                        <button class="btn-reset how-we-work__step" data-path="four">
+                        <button class="btn-reset how-we-work__step" data-path="four" aria-label="Четвертый шаг">
                             4&nbsp;шаг
                         </button>
                     </li>
@@ -175,7 +201,7 @@
                 <div class="how-we-work__wrapper how-we-work__wrapper--active" data-target="one">
                     <div class="how-we-work__left">
                         <h3 class="how-we-work__header">Проводим консультацию</h3>
-                        <p class="how-we-work__descr">
+                        <p class="how-we-work__descr" aria-label="Описание заголовка">
                             Влечёт за&nbsp;собой процесс внедрения и&nbsp;модернизации приоритизации разума над
                             эмоциями.
                             В&nbsp;рамках спецификации современных стандартов, некоторые особенности внутренней политики
@@ -203,7 +229,7 @@
                 <div class="how-we-work__wrapper" data-target="two">
                     <div class="how-we-work__left">
                         <h3 class="how-we-work__header">Составляем смету</h3>
-                        <p class="how-we-work__descr">
+                        <p class="how-we-work__descr" aria-label="Описание заголовка">
                             Внедрения и&nbsp;модернизации приоритизации разума над эмоциями. В&nbsp;рамках спецификации
                             современных стандартов, некоторые особенности внутренней политики будут объективно
                             рассмотрены соответствующими инстанциями. А&nbsp;также представители современных социальных
@@ -226,7 +252,7 @@
                 <div class="how-we-work__wrapper" data-target="three">
                     <div class="how-we-work__left">
                         <h3 class="how-we-work__header">Привлекаем подрядчиков</h3>
-                        <p class="how-we-work__descr">
+                        <p class="how-we-work__descr" aria-label="Описание заголовка">
                             Идейные соображения высшего порядка, а&nbsp;также новая модель организационной деятельности
                             требует анализа прогресса профессионального сообщества. Высокий уровень вовлечения
                             представителей целевой аудитории является чётким доказательством простого факта:
@@ -252,7 +278,7 @@
                 <div class="how-we-work__wrapper" data-target="four">
                     <div class="how-we-work__left">
                         <h3 class="how-we-work__header">Инспектируем все этапы работ</h3>
-                        <p class="how-we-work__descr">
+                        <p class="how-we-work__descr" aria-label="Описание заголовка">
                             Высокий уровень вовлечения представителей целевой аудитории является чётким доказательством
                             простого факта: высококачественный прототип будущего проекта напрямую зависит
                             от&nbsp;дальнейших направлений развития. Разнообразный и&nbsp;богатый опыт говорит нам, что
@@ -276,78 +302,182 @@
             </div>
         </section>
         <section class="main__section questions main__section__offset" id="questions">
-            <div class="container questions__container">
+
+            <div class="container questions__container accordion__container">
                 <h2 class="main__section__header questions__header">Часто задаваемые вопросы</h2>
-                <ul class="questions__list list-reset">
-                    <li class="questions__item" tabindex="0">
-                        <p class="questions__paragraph">
-                            Из&nbsp;чего формируется конечная стоимость проекта?
-                        </p>
-                        <button class="questions__button btn-reset">
-                            <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="25" cy="25" rx="25" ry="25" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
-                            </svg>
+                <ul class="questions__list list-reset accordion__list" id="accordion">
+                    <li class="questions__item accordion__item ac">
+                        <div class="accordion__top">
+                            <p class="questions__paragraph" aria-label="Заголовок аккордиона 1">
+                                Из&nbsp;чего формируется конечная стоимость проекта?
+                            </p>
+                            <button class="questions__button btn-reset">
+                                <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="25" cy="25" rx="25" ry="25" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="accordion__bottom ac-panel">
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Являясь всего лишь частью общей картины, непосредственные участники технического
+                                прогресса призывают нас
+                                к&nbsp;новым свершениям, которые, в&nbsp;свою очередь, должны быть своевременно
+                                верифицированы.
+                                Но&nbsp;высококачественный прототип будущего проекта является качественно новой ступенью
+                                первоочередных требований. А&nbsp;ещё некоторые особенности внутренней политики, которые
+                                представляют собой яркий пример континентально-европейского типа политической культуры,
+                                будут объявлены нарушающими общечеловеческие нормы этики и&nbsp;морали. И&nbsp;нет
+                                сомнений, что явные признаки победы институционализации призывают нас к&nbsp;новым
+                                свершениям, которые, в&nbsp;свою очередь, должны быть указаны как претенденты
+                                на&nbsp;роль ключевых факторов.
+                            </div>
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Приятно, граждане, наблюдать, как некоторые особенности внутренней политики могут быть
+                                призваны к&nbsp;ответу. Явные признаки победы институционализации набирают популярность
+                                среди определённых слоёв населения,
+                                а&nbsp;значит, должны быть объединены в&nbsp;целые кластеры себе подобных. Банальные,
+                                но&nbsp;неопровержимые выводы,
+                                а&nbsp;также многие известные личности призывают нас к&nbsp;новым свершениям, которые,
+                                в&nbsp;свою очередь, должны быть представлены в&nbsp;исключительно положительном свете.
+                            </div>
 
-                        </button>
+                        </div>
                     </li>
-                    <li class="questions__item" tabindex="0">
-                        <p class="questions__paragraph">
-                            У&nbsp;меня есть свой проект. Сможем&nbsp;ли мы&nbsp;его
-                            доработать&nbsp;/ реализовать?
-                        </p>
-                        <button class="questions__button btn-reset">
-                            <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="25" cy="25" rx="25" ry="25" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li class="questions__item" tabindex="0">
-                        <p class="questions__paragraph">
-                            Я&nbsp;выбираю между разными компаниями. В&nbsp;чём ваше отличие?
-                        </p>
-                        <button class="questions__button btn-reset">
-                            <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="25" cy="25" rx="25" ry="25" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
-                            </svg>
+                    <li class="questions__item accordion__item ac">
+                        <div class="accordion__top">
+                            <p class="questions__paragraph" aria-label="Заголовок аккордиона 2">
+                                У&nbsp;меня есть свой проект. Сможем&nbsp;ли мы&nbsp;его
+                                доработать&nbsp;/ реализовать?
+                            </p>
+                            <button class="questions__button btn-reset">
+                                <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="25" cy="25" rx="25" ry="25" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="accordion__bottom ac-panel">
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                took a
+                                galley of type and scrambled it to make a type specimen book. It has survived not only
+                                five
+                                centuries, but also the leap into electronic typesetting, remaining essentially
+                                unchanged.
+                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                                Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker
+                                including
+                                versions of Lorem Ipsum
+                            </div>
 
-                        </button>
+                        </div>
                     </li>
-                    <li class="questions__item" tabindex="0">
-                        <p class="questions__paragraph">
-                            Могу&nbsp;ли я&nbsp;делегировать вам работу&nbsp;/ согласование
-                            с&nbsp;подрядчиком&nbsp;/ организацией?
-                        </p>
-                        <button class="questions__button btn-reset">
-                            <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="25" cy="25" rx="25" ry="25" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
-                            </svg>
+                    <li class="questions__item accordion__item ac">
+                        <div class="accordion__top">
+                            <p class="questions__paragraph" aria-label="Заголовок аккордиона 3">
+                                Я&nbsp;выбираю между разными компаниями. В&nbsp;чём ваше отличие?
+                            </p>
+                            <button class="questions__button btn-reset">
+                                <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="25" cy="25" rx="25" ry="25" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="accordion__bottom ac-panel">
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                took a
+                                galley of type and scrambled it to make a type specimen book. It has survived not only
+                                five
+                                centuries, but also the leap into electronic typesetting, remaining essentially
+                                unchanged.
+                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                                Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker
+                                including
+                                versions of Lorem Ipsum
+                            </div>
 
-                        </button>
+                        </div>
                     </li>
-                    <li class="questions__item" tabindex="0">
-                        <p class="questions__paragraph">
-                            Могу&nbsp;ли я&nbsp;вернуть деньги на&nbsp;каком-либо из&nbsp;этапов работ?
-                        </p>
-                        <button class="questions__button btn-reset">
-                            <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <ellipse cx="25" cy="25" rx="25" ry="25" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
-                            </svg>
-                        </button>
+                    <li class="questions__item accordion__item ac">
+                        <div class="accordion__top">
+                            <p class="questions__paragraph" aria-label="Заголовок аккордиона 4">
+                                Могу&nbsp;ли я&nbsp;делегировать вам работу&nbsp;/ согласование
+                                с&nbsp;подрядчиком&nbsp;/ организацией?
+                            </p>
+                            <button class="questions__button btn-reset">
+                                <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="25" cy="25" rx="25" ry="25" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="accordion__bottom ac-panel">
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                took a
+                                galley of type and scrambled it to make a type specimen book. It has survived not only
+                                five
+                                centuries, but also the leap into electronic typesetting, remaining essentially
+                                unchanged.
+                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                                Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker
+                                including
+                                versions of Lorem Ipsum
+                            </div>
+                        </div>
+                    </li>
+                    <li class="questions__item accordion__item ac">
+                        <div class="accordion__top">
+                            <p class="questions__paragraph" aria-label="Заголовок аккордиона 5">
+                                Могу&nbsp;ли я&nbsp;вернуть деньги на&nbsp;каком-либо из&nbsp;этапов работ?
+
+                            </p>
+                            <button class="questions__button btn-reset">
+                                <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="25" cy="25" rx="25" ry="25" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.0571 24.0571L25.0571 9L25.9429 9L25.9429 24.0571L33.8835 24.0571L41 24.0571L41 24.9429L25.9429 24.9429L25.9429 40L25.0571 40L25.0571 24.9429L10 24.9429L10 24.0571L25.0571 24.0571Z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="accordion__bottom ac-panel">
+                            <div class="ac__text" aria-label="Текст аккордиона">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                                took a
+                                galley of type and scrambled it to make a type specimen book. It has survived not only
+                                five
+                                centuries, but also the leap into electronic typesetting, remaining essentially
+                                unchanged.
+                                It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                                Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker
+                                including
+                                versions of Lorem Ipsum
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -356,7 +486,7 @@
     <footer class="footer">
         <div class="container footer__container">
             <div class="footer__left">
-                <a href="#" class="footer__logo">
+                <a href="#" class="footer__logo" aria-label="Логотип">
                     <img src="img/light_logo.svg" alt="Евклид - Проектные системы">
                 </a>
                 <nav class="footer__nav">
@@ -374,7 +504,7 @@
                 </nav>
                 <ul class="social footer__social__list list-reset">
                     <li class="social__item">
-                        <a href="#" class="social__link">
+                        <a href="#" class="social__link" aria-label="Ссылка на одноклассники">
                             <svg viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M25.7054 19.9812C25.7054 22.4546 27.7105 24.4598 30.1838 24.4598C32.6572 24.4598 34.6623 22.4546 34.6623 19.9812C34.6623 17.5079 32.6572 15.5028 30.1838 15.5028C27.7105 15.5028 25.7054 17.5079 25.7054 19.9812Z" />
@@ -384,7 +514,7 @@
                         </a>
                     </li>
                     <li class="social__item">
-                        <a href="#" class="social__link">
+                        <a href="#" class="social__link" aria-label="Ссылка на вконтакте">
                             <svg viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M30 0C13.432 0 0 13.4314 0 30C0 46.5686 13.432 60 30 60C46.568 60 60 46.5686 60 30C60 13.4314 46.568 0 30 0ZM45.2176 33.2446C46.6159 34.6103 48.0951 35.8957 49.3504 37.4026C49.9065 38.0692 50.4307 38.7585 50.8297 39.5337C51.3993 40.6392 50.8849 41.8515 49.8954 41.9171L43.7494 41.9159C42.162 42.0473 40.8988 41.4071 39.8339 40.3218C38.9837 39.457 38.195 38.5332 37.3762 37.6389C37.0416 37.2718 36.6893 36.9262 36.2695 36.6543C35.4316 36.1093 34.7036 36.2762 34.2236 37.1515C33.7344 38.0421 33.6227 39.0292 33.5761 40.0205C33.5092 41.4697 33.0721 41.8484 31.618 41.9165C28.5109 42.062 25.5628 41.5906 22.8227 40.0241C20.4055 38.6425 18.5346 36.6924 16.9043 34.4845C13.7297 30.1805 11.2984 25.4566 9.11386 20.597C8.6222 19.5026 8.98189 18.917 10.1893 18.8943C12.1952 18.8557 14.2011 18.8606 16.2071 18.8925C17.0234 18.9054 17.5636 19.3725 17.8772 20.1428C18.9612 22.8098 20.2901 25.3473 21.9554 27.7007C22.3992 28.3274 22.8522 28.9522 23.4973 29.3948C24.2093 29.8834 24.7519 29.7219 25.0877 28.9271C25.3025 28.4219 25.3952 27.8817 25.4418 27.3404C25.6014 25.486 25.6205 23.6323 25.3442 21.7854C25.1724 20.6296 24.5224 19.8832 23.3702 19.6647C22.7834 19.5536 22.8694 19.3363 23.1548 19.0011C23.6501 18.4217 24.1142 18.0632 25.0416 18.0632L31.9857 18.062C33.0801 18.2768 33.3256 18.7679 33.4742 19.8703L33.4803 27.5871C33.4674 28.0137 33.6945 29.2782 34.4606 29.5574C35.0744 29.76 35.4795 29.2677 35.8465 28.8792C37.5118 27.112 38.6983 25.0263 39.7608 22.8675C40.2298 21.9155 40.6343 20.9303 41.0271 19.9433C41.3193 19.2135 41.7735 18.8544 42.5972 18.8667L49.2841 18.8747C49.4811 18.8747 49.6812 18.8765 49.8764 18.9103C51.0034 19.103 51.3121 19.5879 50.9635 20.6873C50.4147 22.4145 49.3485 23.8533 48.3063 25.2958C47.1892 26.8401 45.9977 28.3304 44.8917 29.8815C43.8752 31.2994 43.9556 32.0133 45.2176 33.2446Z" />
@@ -396,12 +526,14 @@
             <div class="footer__middle" id="review">
                 <h2 class="footer__header">Оставить заявку</h2>
                 <form action="https://jsonplaceholder.typicode.com/posts" method="POST" class="form footer__form">
-                    <input type="text" class="form__input" placeholder="Фамилия, имя и отчество*" required>
-                    <input type="email" class="form__input" placeholder="Email*" required>
-                    <textarea class="form__textarea" placeholder="Сообщение"></textarea>
+                    <input type="text" class="form__input" placeholder="Фамилия, имя и отчество*"
+                        aria-label="Введите Фамилию, имя и отчество" required>
+                    <input type="email" class="form__input" placeholder="Email*" aria-label="Введите Email" required>
+                    <textarea class="form__textarea" placeholder="Сообщение" aria-label="Введите сообщение"></textarea>
                     <div class="form__bottom">
                         <button class="form__button btn btn-reset">Отправить данные</button>
-                        <input type="checkbox" class="form__checkbox" id="check" required>
+                        <input type="checkbox" role="checkbox" aria-checked="false" class="form__checkbox" id="check"
+                            required>
                         <label class="form__label" for="check">Согласен на&nbsp;обработку данных</label>
                     </div>
                 </form>
@@ -417,8 +549,9 @@
             </div>
         </div>
     </footer>
-    <script src="js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/swiper_init.js"></script>
 
 </body>
